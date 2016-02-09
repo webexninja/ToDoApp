@@ -1,0 +1,21 @@
+<% if !@task_c.empty? %>
+	<h2>Completed</h2>
+	<% @task_c.each do |t| %>
+	<ul>
+		<li><%= t.title %></li>
+	</ul>
+	<% end %>
+<% end %>
+<% if !@task_i.empty? %>
+	<h2>To be Completed</h2>
+	<% @task_i.each do |t| %>
+	<ul>
+		<li>
+			<%= check_box_tag 'done', t.done %>
+			<%= t.title %>
+			<%= link_to "Edit", edit_task_path(t) %> 
+			<%= link_to "Delete", t, :method => :delete, :confirm => "Are you sure?", :title => "Delete item"%>
+		</li>
+	</ul>
+	<% end %>
+<% end %>
